@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import reg from '../user/reg.vue';
-const isRegistering = ref(false)
-</script>
-
 <template>
     <reg v-if="isRegistering" @close="isRegistering = false"></reg>
     <div class="bg">
@@ -21,7 +16,7 @@ const isRegistering = ref(false)
                     <label>密码</label>
                 </div>
                 <div style="padding-top: 30px;">
-                    <a href="/user/info">
+                    <a href="/user">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -41,6 +36,11 @@ const isRegistering = ref(false)
     </div>
     <h1>首页</h1>
 </template>
+
+<script setup lang="ts">
+import reg from '../user/reg.vue';
+const isRegistering = ref(false)
+</script>
 
 <style scoped>
 @import url("~/assets/css/login.css");

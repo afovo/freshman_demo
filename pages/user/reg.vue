@@ -1,55 +1,106 @@
-<script setup lang="ts">
-import { reactive } from 'vue'
-
-// do not use same name with ref
-const form = reactive({
-  uname: '',
-  id: '',
-  grade: '',
-  password: '',
-  date1: '',
-  date2: '',
-  delivery: false,
-  type: [],
-  resource: '',
-  desc: '',
-})
-
-const onSubmit = () => {
-  console.log('submit!')
-}
-</script>
-
 <template>
-  <div class="form-grid" @mousewheel.prevent>
-    <el-form :model="form" label-width="90px" size="large" style="padding-top: 20px;">
-      <el-form-item label="姓名">
-        <el-input v-model="form.uname" />
+  <div class="form-grid">
+    <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm"
+      status-icon style="padding-top: 40px;">
+      <el-form-item label="姓名" prop="uname">
+        <el-input v-model="ruleForm.uname" />
       </el-form-item>
-      <el-form-item label="学号">
-        <el-input v-model="form.id" />
+      <el-form-item label="学号" prop="id">
+        <el-input v-model="ruleForm.id" />
       </el-form-item>
-      <el-form-item label="年级">
-        <el-select v-model="form.grade" placeholder="请选择你的年级">
-          <el-option label="大一" value="1" />
-          <el-option label="大二" value="2" />
-          <el-option label="大三" value="3" />
-          <el-option label="大四" value="4" />
-          <el-option label="研究生" value="5" />
-          <el-option label="其它" value="6" />
+
+      <el-form-item label="年级" prop="grade">
+        <el-select v-model="ruleForm.grade" placeholder="请选择年级">
+          <el-option label="大一" value="shanghai" />
+          <el-option label="大二" value="beijing" />
         </el-select>
       </el-form-item>
-      <el-form-item label="密码">
-        <el-input v-model="form.password" />
+      <el-form-item label="密码" prop="password">
+        <el-input v-model="ruleForm.password" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">注册</el-button>
+        <el-button type="primary" @click="submitForm(ruleFormRef)">
+          注册
+        </el-button>
         <el-button @click="$emit('close')">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
-  <div class="page" @mousewheel.prevent></div>
+  <div class="bg"></div>
 </template>
+
+<script lang="ts" setup>
+import { reactive, ref } from 'vue'
+import type { FormInstance, FormRules } from 'element-plus'
+
+interface RuleForm {
+  uname: string
+  id: string
+  grade: string
+  password: string
+}
+
+const formSize = ref('default')
+const ruleFormRef = ref<FormInstance>()
+const ruleForm = reactive<RuleForm>({
+  uname: '',
+  id: '',
+  grade: '',
+  password: ''
+})
+
+const rules = reactive<FormRules<RuleForm>>({
+  uname: [
+    { required: true, message: '姓名不能为空', trigger: 'blur' },
+    { min: 3, max: 5, message: '姓名长度需在3到5之间', trigger: 'blur' },
+  ],
+  id: [
+    {
+      required: true,
+      message: '学号不能为空',
+      trigger: 'blur',
+    },
+  ],
+  grade: [
+    {
+      required: true,
+      message: 'Please select Activity count',
+      trigger: 'change',
+    },
+  ],
+  password: [
+    {
+      required: true,
+      message: '密码不能为空',
+      trigger: 'blur',
+    },
+    {
+      
+    }
+  ]
+})
+
+const submitForm = async (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  await formEl.validate((valid, fields) => {
+    if (valid) {
+      console.log('submit!')
+    } else {
+      console.log('error submit!', fields)
+    }
+  })
+}
+
+const resetForm = (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  formEl.resetFields()
+}
+
+const options = Array.from({ length: 10000 }).map((_, idx) => ({
+  value: `${idx + 1}`,
+  label: `${idx + 1}`,
+}))
+</script>
 
 <style scoped>
 .page {

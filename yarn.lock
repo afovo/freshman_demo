@@ -324,10 +324,19 @@
   resolved "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-3.6.1.tgz"
   integrity sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==
 
-"@element-plus/icons-vue@^2.0.6":
+"@element-plus/icons-vue@^2.0.6", "@element-plus/icons-vue@>=0.2.6":
   version "2.1.0"
   resolved "https://registry.npmjs.org/@element-plus/icons-vue/-/icons-vue-2.1.0.tgz"
   integrity sha512-PSBn3elNoanENc1vnCfh+3WA9fimRC7n+fWkf3rE5jvv+aBohNHABC/KAR5KWPecxWxDTVT1ERpRbOMRcOV/vA==
+
+"@element-plus/nuxt@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/@element-plus/nuxt/-/nuxt-1.0.6.tgz"
+  integrity sha512-UdZ1YD4gSpXL7vIciYVRXBHPMTq/FFfLqtWiTVA18n/65tAw75HvJE1OmvA3ZhW8tMAxhv3IGzh4zA5zdFXCFg==
+  dependencies:
+    "@nuxt/kit" "^3.7.1"
+    magic-string "^0.27.0"
+    unplugin "^1.0.1"
 
 "@esbuild-kit/cjs-loader@^2.4.2":
   version "2.4.4"
@@ -658,7 +667,7 @@
     which "^3.0.1"
     ws "^8.14.2"
 
-"@nuxt/kit@^3.7.3", "@nuxt/kit@3.7.3":
+"@nuxt/kit@^3.7.1", "@nuxt/kit@^3.7.3", "@nuxt/kit@3.7.3":
   version "3.7.3"
   resolved "https://registry.npmjs.org/@nuxt/kit/-/kit-3.7.3.tgz"
   integrity sha512-bhP02i6CNti15Z4ix3LpR3fd1ANtTcpfS3CDSaCja24hDt3UxIasyp52mqD9LRC+OxrUVHJziB18EwUtS6RLDQ==
@@ -2174,7 +2183,7 @@ electron-to-chromium@^1.4.526:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.528.tgz"
   integrity sha512-UdREXMXzLkREF4jA8t89FQjA8WHI6ssP38PMY4/4KhXFQbtImnghh4GkCgrtiZwLKUKVD2iTVXvDVQjfomEQuA==
 
-element-plus@^2.3.14:
+element-plus@^2.3.14, element-plus@>=2:
   version "2.3.14"
   resolved "https://registry.npmjs.org/element-plus/-/element-plus-2.3.14.tgz"
   integrity sha512-9yvxUaU4jXf2ZNPdmIxoj/f8BG8CDcGM6oHa9JIqxLjQlfY4bpzR1E5CjNimnOX3rxO93w1TQ0jTVt0RSxh9kA==
@@ -5372,7 +5381,7 @@ unplugin-vue-router@^0.6.4:
     unplugin "^1.3.1"
     yaml "^2.2.2"
 
-unplugin@^1.3.1, unplugin@^1.4.0:
+unplugin@^1.0.1, unplugin@^1.3.1, unplugin@^1.4.0:
   version "1.5.0"
   resolved "https://registry.npmjs.org/unplugin/-/unplugin-1.5.0.tgz"
   integrity sha512-9ZdRwbh/4gcm1JTOkp9lAkIDrtOyOxgHmY7cjuwI8L/2RTikMcVG25GsZwNAgRuap3iDw2jeq7eoqtAsz5rW3A==

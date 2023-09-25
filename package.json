@@ -10,10 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@element-plus/nuxt": "^1.0.6",
     "@nuxt/devtools": "latest",
+    "element-plus": "^2.3.14",
     "nuxt": "^3.7.3"
   },
   "dependencies": {
-    "element-plus": "^2.3.14"
+    "async-validator": "^4.2.5"
   }
 }
