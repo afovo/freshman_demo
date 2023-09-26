@@ -1,6 +1,7 @@
 <template>
   <div class="form-grid">
-    <el-form ref="ruleFormRef" :size="'large'" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm" status-icon
+    <!-- :rules="rules"  -->
+    <el-form ref="ruleFormRef" :size="'large'" :model="ruleForm" label-width="120px" class="demo-ruleForm" status-icon
       style="padding-top: 50px;">
       <el-form-item label="姓名" prop="uname">
         <el-input v-model="ruleForm.uname" />
@@ -41,8 +42,8 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
-import users from 'assets/json/users.json'
-
+import { usersStore } from '@/stores/users'
+const usersAPI = usersStore()
 interface RuleForm {
   uname: string
   uid: string
@@ -60,12 +61,11 @@ const ruleForm = reactive<RuleForm>({
 })
 
 const uniqueID = (rule: any, value: string, callback: any) => {
-  users.forEach((item) => {
+  for (let item of usersAPI){
     if (item.uid === value) {
-      return callback('该学号已被注册');
+      return callback('该学号已被 '+item.uname+' 注册');
     }
   }
-  );
   callback();
 }
 const passwordCheck = (rule: any, value: string, callback: any) => {
@@ -117,6 +117,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       console.log('submit!')
+      usersAPI.addUser(ruleForm);
     } else {
       console.log('error submit!', fields)
     }

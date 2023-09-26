@@ -17,8 +17,10 @@
     "nuxt": "^3.7.3"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
     "async-validator": "^4.2.5",
     "axios": "^1.5.0",
-    "mockjs": "^1.1.0"
+    "mockjs": "^1.1.0",
+    "pinia": "^2.1.6"
   }
 }
