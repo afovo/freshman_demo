@@ -15,9 +15,7 @@
                 placeholder="0.00">
             </div>
           </div>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot Foster
-            <ElButton :icon="ElIconEditPen" style="margin-left: 20px;" />
-          </dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><span>{{ info.uname }}</span><ElButton :icon="ElIconEditPen" style="margin-left: 20px;" /></dd>
 
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -45,14 +43,34 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-const user = reactive(
-  {
-    uname: 'afovo',
-    id: '',
-    grade: '',
-    password: ''
+import { usersStore } from '@/stores/users';
+import { useRouter } from 'vue-router';
+const usersAPI = usersStore();
+const router = useRouter();
+const info = ref({
+  uname: '',
+  uid: '',
+  grade: '',
+  password: ''
+})
+if (usersAPI.data !== null) {
+const users:Array<any> = usersAPI.data
+const id = localStorage.getItem('token');
+
+
+
+users.forEach((user)=>{
+  if (user.id === Number(id)) {
+    info.value.uid = user.uid;
+    info.value.uname = user.uname;
+    info.value.grade = user.grade;
+    info.value.password = user.password;
   }
-)
+})
+} else {
+  console.error('出错：暂无用户')
+}
+
 </script>
 
 <style scoped></style>

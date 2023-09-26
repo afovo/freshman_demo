@@ -1,7 +1,6 @@
 <template>
   <div class="form-grid">
-    <!-- :rules="rules"  -->
-    <el-form ref="ruleFormRef" :size="'large'" :model="ruleForm" label-width="120px" class="demo-ruleForm" status-icon
+    <el-form ref="ruleFormRef" :size="'large'" :rules="rules" :model="ruleForm" label-width="120px" class="demo-ruleForm" status-icon
       style="padding-top: 50px;">
       <el-form-item label="姓名" prop="uname">
         <el-input v-model="ruleForm.uname" />
@@ -29,7 +28,7 @@
       <el-form-item>
         <Button1 :text="'注册'" @click="submitForm(ruleFormRef)" style="padding: 5px;" />
         <NuxtLink to="/">
-          <Button2 :text="'取消'"/>
+          <Button2 :text="'取消'" />
         </NuxtLink>
       </el-form-item>
     </el-form>
@@ -43,7 +42,9 @@
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { usersStore } from '@/stores/users'
+import {useRouter} from 'vue-router'
 const usersAPI = usersStore()
+const router = useRouter()
 interface RuleForm {
   uname: string
   uid: string
@@ -61,9 +62,12 @@ const ruleForm = reactive<RuleForm>({
 })
 
 const uniqueID = (rule: any, value: string, callback: any) => {
-  for (let item of usersAPI){
-    if (item.uid === value) {
-      return callback('该学号已被 '+item.uname+' 注册');
+  if (usersAPI.data !== null) {
+    const a: Array<any> = usersAPI.data
+    for (let item of a) {
+      if (item.uid === value) {
+        return callback('该学号已被 ' + item.uname + ' 注册');
+      }
     }
   }
   callback();
@@ -117,7 +121,9 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       console.log('submit!')
-      usersAPI.addUser(ruleForm);
+      const id = usersAPI.addUser(ruleForm);
+      localStorage.setItem('token', id+'');
+      router.push('/user');
     } else {
       console.log('error submit!', fields)
     }

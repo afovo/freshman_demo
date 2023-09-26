@@ -363,3 +363,7 @@
     bottom: 100%;
   }
 }
+
+.error-message {
+  color: rgb(251, 37, 37);
+}
