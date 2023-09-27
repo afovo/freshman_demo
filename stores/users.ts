@@ -3,7 +3,7 @@ import allUsers from '../assets/json/users.json'
 
 export const usersStore = defineStore('users', {
     state: () => ({
-        data: null,
+        data: new Array(),
         loading: false,
         error: null
     }),
@@ -11,14 +11,14 @@ export const usersStore = defineStore('users', {
         async getAllUsers() {
             try {
                 this.loading = true;
-                const data = await new Promise(resolve => {
+                const data:Array<any> = await new Promise(resolve => {
                     setTimeout(() => {
                         resolve(allUsers)
                     }, 500)
                 })
                 this.data = data
                 return data
-            } catch (error) {
+            } catch (error:any) {
                 this.error = error.message;
             } finally {
                 this.loading = false;

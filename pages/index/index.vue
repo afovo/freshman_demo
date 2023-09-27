@@ -50,7 +50,7 @@ const loginForm = ref({
     password: ''
 })
 const errorMessage = ref('')
-
+localStorage.clear();//返回首页后token清除
 async function login(event: any) {
     event.preventDefault();
     await usersAPI.getAllUsers;
