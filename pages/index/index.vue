@@ -50,12 +50,14 @@ const loginForm = ref({
     password: ''
 })
 const errorMessage = ref('')
-localStorage.clear();//返回首页后token清除
+if (typeof localStorage != 'undefined' && localStorage.getItem('token') != null) {
+    localStorage.clear();//返回首页后token清除
+}
 async function login(event: any) {
     event.preventDefault();
-    await usersAPI.getAllUsers;
-    if (usersAPI.data !== null) {
-        const users: Array<any> = usersAPI.data;
+    await usersAPI.setAllUsers();
+    const users: Array<any> = usersAPI.getAllUsers;
+    if (users !== null) {
         var flag: boolean = false;
         var token: string = '';
         // const flag = users.find(user => user.uname === loginForm.value.uname && user.password === loginForm.value.password);
