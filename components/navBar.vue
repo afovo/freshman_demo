@@ -68,7 +68,6 @@ import { usersStore } from '~/stores/users';
 const usersAPI = usersStore();
 const router = useRouter();
 
-
 const isDropdownOpen = ref(false);
 const unameFW = ref('')
 if (typeof localStorage!='undefined'&&localStorage.getItem('token')!=null) {
