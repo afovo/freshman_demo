@@ -11,10 +11,11 @@
 │  ├─json //假数据
 │  └─pic
 │          
-├─components //复用组件
+├─components
 │      button1.vue
 │      button2.vue
 │      navBar.vue //页头，同时用于拦截未登录用户
+│      userInfo.vue //管理员视图的用户详情
 
 ├─pages
 │  ├─admin //管理员页面：查看用户列表，修改用户信息
@@ -103,7 +104,12 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ## Conclusion
 
+两天从vue+js+vuex转nuxt+ts+pinia，很多地方不够优雅也不够熟练，踩过的坑都有记录下来。
 
+- To be continued：
+  - admin页面的[添加用户]按钮功能因为没要求就没写
+  - pinia相关及localStorage的部分用得有点别扭，需要进一步熟练
+  - 首页[关于]按钮功能因为没要求就没写
 
 
 
@@ -114,5 +120,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 [定义 Store | Pinia (vuejs.org)](https://pinia.vuejs.org/zh/core-concepts/)
 
 [Tailwind CSS Components - Tailwind UI](https://tailwindui.com/components)
+
+[Icon Sets • Iconify](https://icon-sets.iconify.design/)
 
 [Form 表单 | Element Plus (element-plus.org)](https://element-plus.org/zh-CN/component/form.html)
