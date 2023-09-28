@@ -4,6 +4,8 @@
 
 白板-新手demo标准：[新手Demo项目标准 - Feishu Docs](https://blankspace.feishu.cn/wiki/TBz3wXNQWinnSCkwP82czSvJnLf)
 
+用本地json和promise做假数据的纯前端项目，刷新以后数据增删改查将会恢复成初始值
+
 ### Details
 
 ├─assets //静态文件
