@@ -59,17 +59,22 @@ async function login(event: any) {
     const users: Array<any> = usersAPI.getAllUsers;
     if (users !== null) {
         var flag: boolean = false;
+        var isAdmin: string = '0';
         var token: string = '';
         // const flag = users.find(user => user.uname === loginForm.value.uname && user.password === loginForm.value.password);
         users.forEach((user) => {
             if (user.uname === loginForm.value.uname && user.password === loginForm.value.password) {
                 flag = true;
                 token = user.id + '';
+                if (user.isAdmin) {
+                    isAdmin = '1';
+                }
             }
         })
         if (flag) {
             localStorage.setItem('token', token);
-            router.push('/user')
+            localStorage.setItem('isAdmin', isAdmin);
+            isAdmin==='1'?router.push('/admin'):router.push('/user')
             errorMessage.value = '';
         } else {
             errorMessage.value = '用户名或密码错误';
