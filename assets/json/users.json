@@ -1,4 +1,4 @@
 [
-    { "id":0, "uname": "admin", "uid":"admin", "grade":"大四", "password":"1adminadmin", "isAdmin":true },
-    { "id":1, "uname": "wjf", "uid":"12011437", "grade":"大四", "password":"1wjfwjfwjf", "isAdmin":false }
+    { "id":0, "uname": "admin", "uid":"admin", "grade":"大四", "password":"1adminadmin", "isAdmin":true , "lastEdited":""},
+    { "id":1, "uname": "wjf", "uid":"12011437", "grade":"大四", "password":"1wjfwjfwjf", "isAdmin":false, "lastEdited":""}
 ]

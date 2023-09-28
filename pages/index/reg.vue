@@ -8,7 +8,6 @@
       <el-form-item label="学号" prop="uid">
         <el-input v-model="ruleForm.uid" />
       </el-form-item>
-
       <el-form-item label="年级" prop="grade">
         <el-select v-model="ruleForm.grade" placeholder="请选择年级">
           <el-option label="大一" value="1" />

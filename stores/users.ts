@@ -28,13 +28,14 @@ export const usersStore = defineStore('users', {
                 this.loading = false;
             }
         },
-        getUserByID(id): any {
+        getUserByID(id:number): any {
             var info = {
                 id: 0,
                 uname: '',
                 uid: '',
                 grade: '',
-                password: ''
+                password: '',
+                lastEdited:''
             }
             this.data.forEach((user) => {
                 if (user.id === id) {
@@ -43,13 +44,14 @@ export const usersStore = defineStore('users', {
                     info.uname = user.uname;
                     info.grade = user.grade;
                     info.password = user.password;
+                    info.lastEdited = user.lastEdited;
                     return;
                 }
             })
             return info;
         },
         addUser(ruleForm: any): number {
-            this.data.push({ id: this.data[this.data.length - 1].id + 1, uname: ruleForm.uname, uid: ruleForm.uid, grade: ruleForm.grade, password: ruleForm.password, isAdmin: false });
+            this.data.push({ id: this.data[this.data.length - 1].id + 1, uname: ruleForm.uname, uid: ruleForm.uid, grade: ruleForm.grade, password: ruleForm.password, isAdmin: false, lastEdited:"" });
             return this.data.length - 1;
         },
         deleteUser(id: number): number {
@@ -69,6 +71,7 @@ export const usersStore = defineStore('users', {
                     this.data[i].uid = info.uid;
                     this.data[i].grade = info.grade;
                     this.data[i].password = info.password;
+                    this.data[i].lastEdited = info.lastEdited;
                     return true;
                 }
             }
